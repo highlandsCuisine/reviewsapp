@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../style/style.css" />
+    <title>Reviews | MyDvls</title>
+    <div class="w-full h-screen p-24 bg-white">
+      <div class="flex">
+        <h1 class="text-3xl font-bold mb-4 w-full">Reviews APP DVLS</h1>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr class="bg-gray-200">
+              <th class="border-y border-gray-100 bg-gray-50/50 p-2">
+                Restaurant Name
+              </th>
+              <th class="border-y border-gray-100 bg-gray-50/50 p-2">
+                Restaurant Link
+              </th>
+              <th class="border-y border-gray-100 bg-gray-50/50 p-2">Action</th>
+            </tr>
+          </thead>
+          <tbody id="attendees-list">
+              <form action="/api/v1/google/restaurants/create" method="post">
+            <tr>
+              <td class="border border-gray-300 px-4 py-2">
+                <input
+                  type="text"
+                  placeholder="Restaurant name"
+                  class="p-2 rounded border"
+                  name="name"
+                  value=""
+                />
+              </td>
+
+              <td class="border border-gray-300 px-4 py-2">
+                <input
+                  type="text"
+                  name="link"
+                  placeholder="google link"
+                  class="p-2 rounded border"
+                  value=""
+                />
+              </td>
+              <td class="border border-gray-300 px-4 py-2">
+                <button type="submit" class="w-full h-full">Submit</button>
+              </td>
+            </tr>
+        </form>
+          </tbody>
+        </table>
+        <div class="flex">
+          <h1 class="text-3xl font-bold my-4 w-full">Registered Apps</h1>
+        </div>
+        <table class="w-full border-collapse border border-gray-300">
+          <thead>
+            <tr class="bg-gray-200">
+                 <th class="border-y border-gray-100 bg-gray-50/50 p-2">
+                Restaurant ID
+              </th>
+              <th class="border-y border-gray-100 bg-gray-50/50 p-2">
+                Restaurant Name
+              </th>
+              <th class="border-y border-gray-100 bg-gray-50/50 p-2">
+                Total Rating Shown
+              </th>
+              <th class="border-y border-gray-100 bg-gray-50/50 p-2">Action</th>
+            </tr>
+          </thead>
+          <tbody id="attendees-list">
+            <% data && data.map((res,index) =>{ %>
+            <tr key="<%= index %>">
+              <td class="border border-gray-300 px-4 py-2"><%= res.id %></td>
+              <td class="border border-gray-300 px-4 py-2"><%= res.data.name %></td>
+              <td class="border border-gray-300 px-4 py-2"><%= res.data.reviews.length %></td>
+              <td class="border border-gray-300 px-4 py-2">
+                <form action="/api/v1/google/restaurants/update" method="post">
+                <input type="text" name="name" value="<%= res.data.name %>" hidden/>
+                <input type="text" name="link" value="<%= res.data.link %>" hidden/>
+                <input type="text" name="id" value="<%= res.id %>" hidden/>
+                <button type="submit" class="w-full h-full">Refetch</button>
+                </form>
+              </td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </head>
+</html>
