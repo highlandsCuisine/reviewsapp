@@ -4,12 +4,12 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm install -g pm2
+RUN npm install pm2@latest -g
 
 RUN npm install
 
 COPY . .
 
-EXPOSE 8000
+EXPOSE 8002
 
 CMD ["pm2", "start", "pm2.config.js"]

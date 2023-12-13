@@ -2,7 +2,7 @@ module.exports = {
   apps: [
     {
       name: 'google_reviews',
-      script: 'src/index.js',
+      script: 'index.js',
       instances: 4,
       exec_mode: 'cluster',
       watch: true,
