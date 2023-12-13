@@ -29,7 +29,7 @@ const PORT = process.env.PORT || 8002;
 
 const app = express();
 
-app.set('trust proxy', true);
+app.set('trust proxy', 'loopback');
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
