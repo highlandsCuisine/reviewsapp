@@ -3,11 +3,11 @@ module.exports = {
     {
       name: 'google_reviews',
       script: 'index.js',
-      instances: 'max',
+      instances: 4,
       exec_mode: 'cluster',
       watch: true,
       max_memory_restart: '500M',
-      args: ['--port', 8000],
+      args: ['--port', 8002],
       env: {
         NODE_ENV: 'production',
       },
