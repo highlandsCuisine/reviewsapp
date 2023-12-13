@@ -12,4 +12,4 @@ COPY . .
 
 EXPOSE 8002
 
-CMD ["pm2", "start", "pm2.config.js"]
+CMD ["pm2-runtime", "start", "pm2.config.js", "--env", "production"]
