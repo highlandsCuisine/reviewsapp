@@ -6,6 +6,8 @@ COPY package*.json ./
 
 RUN npm install pm2@latest -g
 
+RUN npm install express-rate-limit
+
 RUN npm install
 
 COPY . .

@@ -25,10 +25,11 @@ const { corsOptionsDelegate } = require('./utils/acceptingHosts');
 const { allowedMethods } = require('./utils/acceptingMethods');
 const { checkContentType } = require('./utils/acceptingMedia');
 
-const PORT = process.env.PORT || 8000;
+const PORT = process.env.PORT || 8002;
 
 const app = express();
 
+app.set('trust proxy', true);
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -54,7 +55,7 @@ app.use(compression());
 // parser for raw or json type data only and payload size limit is 500kb
 app.use(
   bodyParser.json({
-    limit: '500kb',
+    limit: '200kb',
     verify: (req, res, buf) => {
       req.rawBody = buf;
     },

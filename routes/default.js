@@ -6,7 +6,6 @@ const router = express.Router();
 
 router.get('/adminpannel', async (req, res, next) => {
   const data = await allRestaurants();
-  console.log(data);
   if (!data) {
     return next(new ErrorHandler(500, 'Error while fetching data!'));
   }
