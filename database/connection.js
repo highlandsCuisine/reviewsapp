@@ -5,7 +5,7 @@ const { getAuth } = require('firebase/auth');
 const clientAccount = {
   apiKey: process.env.FIREBASE_APIKEY,
   authDomain: process.env.FIREBASE_AUTHDOMAIN,
-  projectId: 'online-ordering-001',
+  projectId: 'highlandcuisine001',
   storageBucket: process.env.FIREBASE_STORAGEBUCKET,
   messagingSenderId: process.env.FIREBASE_MESSAGINGSENDERID,
   appId: process.env.FIREBASE_APPID,
@@ -14,7 +14,7 @@ const clientAccount = {
 
 const serviceAccount = {
   type: 'service_account',
-  project_id: 'online-ordering-001',
+  project_id: 'highlandcuisine001',
   private_key_id: process.env.FIREBASE_PRIVATE_KEY_ID,
   private_key: process.env.FIREBASE_PRIVATE_KEY,
   client_email: process.env.FIREBASE_CLIENT_EMAIL,

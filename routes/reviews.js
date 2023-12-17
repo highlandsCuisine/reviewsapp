@@ -5,15 +5,16 @@ const {
   readPerRestaurants,
   updateRestaurants,
 } = require('../controller/reviews');
+const { isAuthenticated } = require('../middleware/checkAuth');
 
 const router = express.Router();
 
-router.post('/restaurants/create', storeRestaurants);
+router.post('/restaurants/create', isAuthenticated, storeRestaurants);
 
-router.get('/restaurants/read', readRestaurants);
+router.get('/restaurants/read', isAuthenticated, readRestaurants);
 
+router.post('/restaurants/update', isAuthenticated, updateRestaurants);
+// Not protected
 router.get('/restaurants/read/:id', readPerRestaurants);
-
-router.post('/restaurants/update', updateRestaurants);
 
 module.exports = router;

@@ -8,6 +8,9 @@
         "endOfLine": "auto"
       }
     ],
+    "env": {
+      "browser": true
+    },
     "no-unused-vars": "warn",
     "no-console": "off",
     "func-names": "off",

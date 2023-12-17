@@ -15,6 +15,7 @@ const compression = require('compression');
 
 // routes imports
 const ViewRoutes = require('./routes/default');
+const UserRoutes = require('./routes/userRoute');
 const GoogleReviewsRoute = require('./routes/reviews');
 
 // local imports
@@ -24,6 +25,7 @@ const { responseHeader } = require('./middleware/setHeader');
 const { corsOptionsDelegate } = require('./utils/acceptingHosts');
 const { allowedMethods } = require('./utils/acceptingMethods');
 const { checkContentType } = require('./utils/acceptingMedia');
+const sessionMiddleware = require('./middleware/sessionMiddleware');
 
 const PORT = process.env.PORT || 8002;
 
@@ -76,9 +78,11 @@ app.use(helmet());
 app.use(allowedMethods);
 // allowed media types
 app.use(checkContentType);
+// session
+app.use(sessionMiddleware);
 
 app.use('/', ViewRoutes);
-
+app.use('/api/v1/auth/user', UserRoutes);
 app.use('/api/v1/google', GoogleReviewsRoute);
 
 app.use('*', (req, res) => {
