@@ -68,6 +68,7 @@ const signInUser = trycatch(async (req, res, next) => {
 
 const signOutUser = trycatch(async (req, res, next) => {
   await req.session.destroy();
+  await res.clearCookie('_login_info');
   const x = await signOut();
   if (!x) {
     return res.status(400).json({
