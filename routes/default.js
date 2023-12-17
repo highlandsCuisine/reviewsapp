@@ -21,4 +21,8 @@ router.get('/adminpannel', isAuthenticated, async (req, res, next) => {
   });
 });
 
+router.get('/admin/dvls/googlereviews/forgotpass', async (req, res, next) =>
+  res.render('forgotpass')
+);
+
 module.exports = router;

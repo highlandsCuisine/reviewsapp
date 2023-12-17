@@ -6,7 +6,7 @@ module.exports = session({
   resave: false,
   name: '_login_info',
   cookie: {
-    secure: false,
+    secure: true,
     priority: 'high',
     httpOnly: true,
     maxAge: 3540000,

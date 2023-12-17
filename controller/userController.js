@@ -84,7 +84,7 @@ const resetLink = trycatch(async (req, res, next) => {
   if (!resetPasswordLink) {
     return next(new ErrorHandler(500));
   }
-  const data = await ejs.renderFile('views/emailTemplate/passwordReset.ejs', {
+  const data = await ejs.renderFile('views/email/passwordReset.ejs', {
     resetPasswordLink,
   });
   sendEmail({

@@ -80,7 +80,12 @@ app.use(allowedMethods);
 app.use(checkContentType);
 // session
 app.use(sessionMiddleware);
-
+app.use(function (req, res, next) {
+  if (!req.session) {
+    return next(new Error('Error in session!'));
+  }
+  next();
+});
 app.use('/', ViewRoutes);
 app.use('/api/v1/auth/user', UserRoutes);
 app.use('/api/v1/google', GoogleReviewsRoute);
