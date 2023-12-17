@@ -5,6 +5,8 @@ const { isAuthenticated } = require('../middleware/checkAuth');
 
 const router = express.Router();
 
+router.get('/', async (req, res, next) => res.send('OK, Please wait...'));
+
 router.get('/admin/dvls/googlereviews/login', async (req, res, next) =>
   res.render('login')
 );
